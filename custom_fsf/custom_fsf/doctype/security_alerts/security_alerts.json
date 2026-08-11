@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-21 09:04:26.917908",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "warning_name_en",
+  "warning_name_ar",
+  "warning_source",
+  "target_sectors",
+  "warning_description_en",
+  "warning_description_ar",
+  "column_break_ddex",
+  "warning_number",
+  "warning_link",
+  "warning_date",
+  "column_break_sfff",
+  "severity_level",
+  "recommendations",
+  "recommendations_ar",
+  "warning_source_logo"
+ ],
+ "fields": [
+  {
+   "fieldname": "warning_source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Warning Source"
+  },
+  {
+   "description": "Enter sectors separated by a Comma. Example: Sector 1 , Sector 2 , Sector 3",
+   "fieldname": "target_sectors",
+   "fieldtype": "Table",
+   "label": "Target Sectors",
+   "options": "Sector"
+  },
+  {
+   "fieldname": "warning_source_logo",
+   "fieldtype": "Attach Image",
+   "label": "Warning Source Logo"
+  },
+  {
+   "fieldname": "warning_number",
+   "fieldtype": "Data",
+   "label": "Warning Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "severity_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Severity Level",
+   "options": "CRITICAL\nHIGH\nMEDIUM\nLOW",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ddex",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "warning_link",
+   "fieldtype": "Data",
+   "label": "Warning Link"
+  },
+  {
+   "fieldname": "warning_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Warning Date"
+  },
+  {
+   "fieldname": "column_break_sfff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Text",
+   "label": "Recommendations EN"
+  },
+  {
+   "fieldname": "warning_name_en",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Warning Name EN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warning_name_ar",
+   "fieldtype": "Data",
+   "label": "Warning Name AR",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warning_description_en",
+   "fieldtype": "Small Text",
+   "label": "Warning Description EN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "warning_description_ar",
+   "fieldtype": "Small Text",
+   "label": "Warning Description AR",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recommendations_ar",
+   "fieldtype": "Text",
+   "label": "Recommendations AR"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-24 10:47:49.504395",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Security Alerts",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

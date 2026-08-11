@@ -1,0 +1,8 @@
+{
+    "doctype": "Role",
+    "name": "Audit Viewer",
+    "desk_access": 1,
+    "disabled": 0,
+    "is_custom": 0,
+    "description": "Can read and export Audit Log doctype"
+}

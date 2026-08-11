@@ -1,0 +1,23 @@
+[project]
+name = "custom_fsf"
+authors = [
+    { name = "ibrahim alsaghan", email = "i.alsaghan@tamkeentech.sa"}
+]
+description = "custom changes for fsf"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # "frappe~=15.0.0" # Installed and managed by bench.
+    "hijridate>=2.3.0",
+    "pypdf>=3.0.0",
+    "reportlab>=4.0.0"
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4", "hijridate>=2.3.0"]
+build-backend = "flit_core.buildapi"
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+# package_name = "~=1.1.0"

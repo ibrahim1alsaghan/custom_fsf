@@ -1,0 +1,32 @@
+.diff-remove {
+    background-color: #ffe6e6;
+    color: #d63384;
+    text-decoration: line-through;
+}
+
+.diff-add {
+    background-color: #e6ffe6;
+    color: #198754;
+    font-weight: bold;
+}
+
+.audit-log-info table {
+    margin-bottom: 20px;
+}
+
+.audit-log-info h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 5px;
+}
+
+.audit-log-info .table {
+    font-size: 12px;
+}
+
+.audit-log-info .table td {
+    padding: 8px;
+    vertical-align: top;
+}

@@ -1,0 +1,91 @@
+:root {
+  /* Brand Colors */
+  --primary-100: #D8E5D9;
+  --primary-200: #BCCBB3;
+  --primary-300: #98B98C;
+  --primary-400: #619666;
+  --primary-500: #3A7C40;
+  --primary-600: #296E2F;
+  --primary-700: #195A1F;
+  --primary-800: #0E3E12;
+  --primary-900: #062609;
+
+  /* Grays */
+  --gray-100: #ffffff;
+  --gray-200: #EEF0EE;
+  --gray-300: #DEDEDD;
+  --gray-400: #C9CCC9;
+  --gray-500: #BBBBBB;
+  --gray-600: #969996;
+  --gray-700: #7D807D;
+  --gray-800: #646864;
+  --gray-900: #323332;
+  --gray-1000: #191A19;
+
+  /* Other */
+  --border-color: var(--gray-300);
+  --bg-color: var(--gray-100);
+  --text-color: var(--gray-1000);
+}
+
+/* === General === */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* === Buttons === */
+button {
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-surface-gray-7 {
+  background-color: var(--primary-500) !important;
+}
+
+/* === LMS Sidebar Buttons] === */
+.bg-surface-menu-bar {
+  background-color: #EEF0EE;
+}
+
+
+button.flex.h-7.cursor-pointer.items-center.rounded {
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Hover state */
+button.flex.h-7.cursor-pointer.items-center.rounded:hover {
+  background-color: var(--primary-500);
+  color: white;
+}
+button.flex.h-7.cursor-pointer.items-center.rounded:hover svg {
+  stroke: white !important;
+}
+/* Active/selected state */
+button.flex.h-7.cursor-pointer.items-center.rounded.bg-surface-selected {
+  background-color: var(--primary-500);
+  color: white;
+}
+button.bg-surface-selected svg {
+  stroke: white !important;
+}
+
+
+
+button.bg-surface-selected {
+  background-color: var(--primary-500) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+button.bg-surface-selected svg {
+  stroke: white;
+}

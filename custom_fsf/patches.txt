@@ -1,0 +1,23 @@
+[pre_model_sync]
+# Patches added in this section will be executed before doctypes are migrated
+# Read docs to understand patches: https://frappeframework.com/docs/v14/user/en/database-migrations
+
+[post_model_sync]
+# Patches added in this section will be executed after doctypes are migrated
+custom_fsf.patches.add_arabic_name_field
+custom_fsf.patches.add_description_role
+custom_fsf.patches.add_project_milestones_table
+custom_fsf.patches.add_project_attachments_table
+custom_fsf.patches.add_project_escalation_table
+custom_fsf.patches.add_project_stakeholders_table
+custom_fsf.patches.add_project_costs_overview
+custom_fsf.patches.add_value_field
+custom_fsf.patches.add_fields_assets
+custom_fsf.patches.add_assets_category_custom_fields
+custom_fsf.patches.add_employee_asset_permission
+custom_fsf.patches.add_contract_etimad_number
+custom_fsf.patches.add_arabic_notification_translations
+custom_fsf.patches.set_session_timeout_arabic
+custom_fsf.patches.remove_hd_dashboard_shortcut
+custom_fsf.patches.setup_module_roles
+custom_fsf.patches.configure_secure_upload_policy

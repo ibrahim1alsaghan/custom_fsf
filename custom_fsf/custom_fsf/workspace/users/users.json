@@ -1,0 +1,153 @@
+{
+ "charts": [],
+ "content": "[{\"id\": \"gkQvvvQbj3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Active Users\", \"col\": 4}}, {\"id\": \"iVAys6Z1rZ\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Disabled Users\", \"col\": 4}}, {\"id\": \"0LsNZk3VWk\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Active Roles\", \"col\": 4}}, {\"id\": \"b7abeqw4NZ\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"User\", \"col\": 3}}, {\"id\": \"eghSJPhZRC\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Role\", \"col\": 3}}, {\"id\": \"EpBz2lplSt\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Role Profile\", \"col\": 3}}, {\"id\": \"9bd1324117\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee\", \"col\": 3}}]",
+ "creation": "2020-03-02 15:12:16.754449",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "users",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Users",
+ "links": [
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Activity Log",
+   "link_count": 0,
+   "link_to": "Activity Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Access Log",
+   "link_count": 0,
+   "link_to": "Access Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Role Permissions Manager",
+   "link_count": 0,
+   "link_to": "permission-manager",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User Permissions",
+   "link_count": 0,
+   "link_to": "User Permission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Role Permission for Page and Report",
+   "link_count": 0,
+   "link_to": "Role Permission for Page and Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "User",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Permitted Documents For User",
+   "link_count": 0,
+   "link_to": "Permitted Documents For User",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "DocShare",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Document Share Report",
+   "link_count": 0,
+   "link_to": "Document Share Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "DocShare",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-06-11 08:32:50.929042",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Users",
+ "number_cards": [
+  {
+   "label": "Active Users",
+   "number_card_name": "Users"
+  },
+  {
+   "label": "Active Roles",
+   "number_card_name": "Active Roles"
+  },
+  {
+   "label": "Disabled Users",
+   "number_card_name": "Disabled Users"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "HR Manager"
+  }
+ ],
+ "sequence_id": 7.0,
+ "shortcuts": [
+  {
+   "label": "User",
+   "link_to": "User",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Role Profile",
+   "link_to": "Role Profile",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "label": "Role",
+   "link_to": "Role",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Employee",
+   "link_to": "Employee",
+   "type": "DocType"
+  }
+ ],
+ "title": "Users"
+}

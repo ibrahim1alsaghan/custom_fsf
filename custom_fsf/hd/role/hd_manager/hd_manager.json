@@ -1,0 +1,8 @@
+{
+    "doctype": "Role",
+    "name": "HD Manager",
+    "desk_access": 1,
+    "disabled": 0,
+    "is_custom": 0,
+    "description": "Help Desk Manager - Full access to all tickets and configuration"
+}

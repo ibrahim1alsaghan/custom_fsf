@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --fsf-primary: #374736;
+  --fsf-primary-dark: #2A3629;
+  --fsf-secondary: #C5A470;
+  --fsf-text: #1d2125;
+  --fsf-text-muted: #5f6368;
+  --fsf-bg: #f8f9fa;
+  --fsf-border: #e0e0e0;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background-color: white;
+    color: var(--fsf-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer utilities {
+  .no-underline {
+    text-decoration: none;
+  }
+}

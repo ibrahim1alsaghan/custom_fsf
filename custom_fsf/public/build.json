@@ -1,0 +1,5 @@
+{
+    "js/toolbar": "public/js/toolbar_add_button_language.js",
+    "build_command": "cd frontend && yarn install --frozen-lockfile && yarn build"
+  }
+  

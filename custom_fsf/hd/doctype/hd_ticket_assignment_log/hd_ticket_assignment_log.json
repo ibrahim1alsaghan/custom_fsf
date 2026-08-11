@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "creation": "2025-02-08 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "assigned_to",
+  "assigned_team",
+  "column_break_1",
+  "assigned_by",
+  "assigned_date",
+  "section_break_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "assigned_team",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned Team",
+   "options": "HD Team"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assigned_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Assigned Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-08 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "HD",
+ "name": "HD Ticket Assignment Log",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

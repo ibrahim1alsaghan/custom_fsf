@@ -1,0 +1,54 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Fc6cNxqmOt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Events\",\"col\":3}},{\"id\":\"D4-WS255-u\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"News\",\"col\":3}},{\"id\":\"8S5_hKq72y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Security Alerts\",\"col\":3}}]",
+ "creation": "2026-01-11 10:50:52.845597",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "website",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 1,
+ "label": "Landing Page",
+ "links": [],
+ "modified": "2026-01-11 10:52:55.956746",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Landing Page",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 29.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Events",
+   "link_to": "Events",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Security Alerts",
+   "link_to": "Security Alerts",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "News",
+   "link_to": "News",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Landing Page"
+}

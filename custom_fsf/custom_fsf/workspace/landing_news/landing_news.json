@@ -1,0 +1,42 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"BZCNmsHanl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"News\",\"col\":3}}]",
+ "creation": "2025-12-16 13:53:05.346286",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "list-alt",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 1,
+ "label": "Landing News",
+ "links": [],
+ "modified": "2026-01-11 10:52:24.682649",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Landing News",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 17.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "News",
+   "link_to": "News",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Landing News"
+}

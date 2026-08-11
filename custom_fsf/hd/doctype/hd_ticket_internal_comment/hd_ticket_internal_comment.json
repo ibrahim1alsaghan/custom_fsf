@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "creation": "2025-02-08 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "commented_by",
+  "commented_on",
+  "section_break_comment",
+  "comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "commented_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Commented By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "commented_on",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Commented On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_comment",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Comment",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-08 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "HD",
+ "name": "HD Ticket Internal Comment",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

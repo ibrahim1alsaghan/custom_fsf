@@ -1,0 +1,39 @@
+{
+ "based_on": "completed_on",
+ "chart_name": "Completed Tasks",
+ "chart_type": "Count",
+ "color": "#a5d6a7",
+ "creation": "2025-05-15 09:35:56.486868",
+ "currency": "",
+ "custom_options": "",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Task",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "last_synced_on": "2025-09-30 10:20:51.742405",
+ "modified": "2025-09-30 10:21:08.714579",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Completed Tasks",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Projects Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Daily",
+ "timeseries": 1,
+ "timespan": "Last Month",
+ "type": "Line",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}

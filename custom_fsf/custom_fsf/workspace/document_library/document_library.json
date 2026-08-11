@@ -1,0 +1,51 @@
+{
+ "charts": [
+  {
+   "chart_name": "File Classification",
+   "label": "Documents Classification"
+  },
+  {
+   "chart_name": "Downloaded Documents",
+   "label": "Downloaded Documents"
+  },
+  {
+   "chart_name": "File Category",
+   "label": "Documents Category"
+  }
+ ],
+ "content": "[{\"id\":\"8LTJdyBmIG\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Documents Classification\",\"col\":6}},{\"id\":\"BK6ewoHiH3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Documents Category\",\"col\":6}},{\"id\":\"IvsymIBUWG\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Downloaded Documents\",\"col\":12}},{\"id\":\"A4zOA1Rpxc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Documents\",\"col\":7}}]",
+ "creation": "2025-06-18 09:05:33.933275",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "folder-open",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Document Library",
+ "links": [],
+ "modified": "2026-01-08 15:25:28.943311",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Document Library",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 11.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Documents",
+   "link_to": "Library",
+   "stats_filter": "[[\"Library\",\"archived\",\"=\",0,false]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Document Library"
+}

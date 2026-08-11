@@ -1,0 +1,9 @@
+{
+    "doctype": "Role",
+    "name": "Document Manger",
+    "desk_access": 1,
+    "disabled": 0,
+    "is_custom": 0,
+    "description": "This role can manage document library"
+  }
+  

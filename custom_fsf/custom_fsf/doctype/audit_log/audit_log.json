@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-18 10:29:25.329137",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_sp2q",
+  "action_type",
+  "reference_name",
+  "ip_address",
+  "os",
+  "column_break_makl",
+  "user",
+  "reference_doctype",
+  "browser",
+  "timestamp",
+  "section_break_oquj",
+  "changed_data",
+  "change_summary",
+  "session_id",
+  "request_path",
+  "module",
+  "is_system_change",
+  "data_size",
+  "processing_time",
+  "changes_display"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_sp2q",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "action_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Action Type",
+   "options": "Insert\nUpdate\nDelete\nWorkflow\nPermission Change",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference Doctype",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "label": "Reference Name",
+   "options": "reference_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "IP Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "browser",
+   "fieldtype": "Data",
+   "label": "Browser",
+   "read_only": 1
+  },
+  {
+   "fieldname": "os",
+   "fieldtype": "Data",
+   "label": "OS",
+   "read_only": 1
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_makl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_oquj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "changed_data",
+   "fieldtype": "Long Text",
+   "hidden": 1,
+   "label": "Changed Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "change_summary",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Change Summary",
+   "read_only": 1
+  },
+  {
+   "fieldname": "session_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Session ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "request_path",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Request Path",
+   "read_only": 1
+  },
+  {
+   "fieldname": "module",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Module",
+   "read_only": 1
+  },
+  {
+   "fieldname": "is_system_change",
+   "fieldtype": "Check",
+   "default": "0",
+   "hidden": 1,
+   "label": "Is System Change",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_size",
+   "fieldtype": "Float",
+   "default": "0",
+   "hidden": 1,
+   "label": "Data Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "processing_time",
+   "fieldtype": "Float",
+   "default": "0",
+   "hidden": 1,
+   "label": "Processing Time",
+   "precision": "9",
+   "read_only": 1
+  },
+  {
+   "fieldname": "changes_display",
+   "fieldtype": "HTML",
+   "label": "Changes Display"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-26 10:07:48.641229",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Audit Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Audit Viewer",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

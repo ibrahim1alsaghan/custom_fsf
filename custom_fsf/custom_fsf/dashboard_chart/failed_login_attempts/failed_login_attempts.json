@@ -1,0 +1,42 @@
+{
+ "based_on": "creation",
+ "chart_name": "Failed Login Attempts",
+ "chart_type": "Count",
+ "color": "#4463F0",
+ "creation": "2025-08-28 14:19:38.991051",
+ "currency": "",
+ "custom_options": "{\"type\": \"line\", \"axisOptions\": {\"xIsSeries\": 1}, \"lineOptions\": {\"regionFill\": 1}}",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Activity Log",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[[\"Activity Log\",\"status\",\"=\",\"Failed\",false]]",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "last_synced_on": "2025-09-02 13:30:23.907045",
+ "modified": "2025-09-02 13:30:48.714015",
+ "modified_by": "manger@a.a",
+ "module": "custom fsf",
+ "name": "Failed Login Attempts",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Audit Viewer"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Daily",
+ "timeseries": 1,
+ "timespan": "Last Week",
+ "type": "Line",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}

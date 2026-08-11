@@ -1,0 +1,32 @@
+{
+ "cards": [
+  {
+   "card": "Total Tasks"
+  },
+  {
+   "card": "Average completion time"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Tasks",
+   "width": "Full"
+  },
+  {
+   "chart": "Completed Tasks",
+   "width": "Full"
+  }
+ ],
+ "creation": "2025-09-22 11:37:50.359581",
+ "dashboard_name": "Tasks",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-09-28 14:08:58.105700",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Tasks",
+ "owner": "Administrator"
+}

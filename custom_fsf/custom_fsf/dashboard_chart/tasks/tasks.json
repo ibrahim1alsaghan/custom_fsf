@@ -1,0 +1,40 @@
+{
+ "aggregate_function_based_on": "actual_time",
+ "based_on": "",
+ "chart_name": "Tasks",
+ "chart_type": "Group By",
+ "creation": "2025-09-22 11:35:10.209880",
+ "currency": "",
+ "custom_options": "{\"type\": \"bar\", \"colors\": [\"#fbc02d\", \"#a5d6a7\", \"#2e7d32\"], \"axisOptions\": { \"shortenYAxisNumbers\": 1, \"forceNiceScale\": 1, \"tickAmount\": \"dataPoints\", \"decimalPlaces\": 0 }, \"barOptions\": { \"stacked\": 0 }}",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "document_type": "Task",
+ "dynamic_filters_json": "[]",
+ "filters_json": "[]",
+ "group_by_based_on": "status",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "last_synced_on": "2025-09-28 13:23:47.607086",
+ "modified": "2025-09-28 13:23:55.366642",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Tasks",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "parent_document_type": "",
+ "roles": [
+  {
+   "role": "Projects Manager"
+  }
+ ],
+ "source": "",
+ "time_interval": "Yearly",
+ "timeseries": 0,
+ "timespan": "Last Year",
+ "type": "Bar",
+ "use_report_chart": 0,
+ "value_based_on": "",
+ "y_axis": []
+}

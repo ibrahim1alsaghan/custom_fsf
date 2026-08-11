@@ -1,0 +1,73 @@
+{
+ "charts": [
+  {
+   "chart_name": "Action Logged",
+   "label": "Action Logged"
+  },
+  {
+   "chart_name": "Failed Login Attempts",
+   "label": "Failed Login Attempts"
+  },
+  {
+   "chart_name": "Login",
+   "label": "Login"
+  }
+ ],
+ "content": "[{\"id\":\"G0ydKPH74x\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Audit Log\",\"col\":3}},{\"id\":\"g1h_2h9nCo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Activity Log\",\"col\":3}},{\"id\":\"Klz4Zm1YG6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Setting\",\"col\":3}},{\"id\":\"ziFZc1Oiss\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Custom Docperm\",\"col\":3}},{\"id\":\"0p42v8-skh\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Action Logged\",\"col\":12}},{\"id\":\"9xBdHHsKq3\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Login\",\"col\":12}},{\"id\":\"At9xpsUKd2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Failed Login Attempts\",\"col\":12}}]",
+ "creation": "2025-08-18 10:15:22.268550",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Audit Logs",
+ "links": [],
+ "modified": "2026-03-30 14:31:06.019698",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Audit Logs",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 22.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Custom Docperm",
+   "link_to": "Custom DocPerm",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Activity Log",
+   "link_to": "Activity Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Setting",
+   "link_to": "Log Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Audit Log",
+   "link_to": "Audit Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Audit Logs"
+}

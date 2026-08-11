@@ -1,0 +1,37 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"s_my\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Tickets\",\"col\":12}}]",
+ "creation": "2025-02-08 12:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "support",
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Help Desk",
+ "links": [],
+ "modified": "2030-01-02 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "HD",
+ "name": "Help Desk",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 15.0,
+ "shortcuts": [
+  {
+   "color": "#ED64A6",
+   "doc_view": "List",
+   "label": "My Tickets",
+   "link_to": "HD Ticket",
+   "type": "DocType"
+  }
+ ],
+ "title": "Help Desk"
+}

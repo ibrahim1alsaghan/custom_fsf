@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "CEF-.YYYY.-.#####",
+ "creation": "2025-01-16 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "client",
+  "column_break_left",
+  "evaluation_date",
+  "section_break_evaluation",
+  "responsiveness_communication",
+  "clarity_requirements",
+  "timeliness_approvals",
+  "cooperation_engagement",
+  "overall_satisfaction",
+  "section_break_comments",
+  "evaluation_comments",
+  "recommendations"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Customer",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_left",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evaluation_date",
+   "fieldtype": "Date",
+   "label": "Evaluation Date",
+   "default": "Today",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "attach_mrdm",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "section_break_evaluation",
+   "fieldtype": "Section Break",
+   "label": "Client Performance Evaluation"
+  },
+  {
+   "fieldname": "responsiveness_communication",
+   "fieldtype": "Select",
+   "label": "Responsiveness & Communication",
+   "options": "Excellent\nGood\nAverage\nPoor\nVery Poor",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "clarity_requirements",
+   "fieldtype": "Select",
+   "label": "Clarity of Requirements",
+   "options": "Excellent\nGood\nAverage\nPoor\nVery Poor",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "timeliness_approvals",
+   "fieldtype": "Select",
+   "label": "Timeliness of Approvals & Feedback",
+   "options": "Excellent\nGood\nAverage\nPoor\nVery Poor",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "cooperation_engagement",
+   "fieldtype": "Select",
+   "label": "Cooperation & Engagement",
+   "options": "Excellent\nGood\nAverage\nPoor\nVery Poor",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "overall_satisfaction",
+   "fieldtype": "Select",
+   "label": "Overall Satisfaction Rating",
+   "options": "Excellent\nGood\nAverage\nPoor\nVery Poor",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_comments",
+   "fieldtype": "Section Break",
+   "label": "Comments & Recommendations"
+  },
+  {
+   "fieldname": "evaluation_comments",
+   "fieldtype": "Text Editor",
+   "label": "Evaluation Comments",
+   "description": "Detailed comments about client performance and collaboration quality"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Text Editor",
+   "label": "Recommendations",
+   "description": "Recommendations for future engagements with this client"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Client Evaluation Form",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1, "write": 1, "create": 1, "delete": 1,
+   "email": 1, "export": 1, "print": 1, "report": 1, "share": 1
+  },
+  {
+   "role": "Projects Manager",
+   "read": 1, "write": 1, "create": 1, "delete": 1,
+   "email": 1, "export": 1, "print": 1, "report": 1, "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "project"
+}

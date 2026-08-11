@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Events-.YYYY.-.#####",
+ "creation": "2025-12-21 09:09:55.694326",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_title",
+  "event_description",
+  "event_link",
+  "column_break_zzuf",
+  "event_date_gregorian",
+  "event_date_hijri",
+  "event_image"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Event Title"
+  },
+  {
+   "fieldname": "event_description",
+   "fieldtype": "Data",
+   "label": "Event Description"
+  },
+  {
+   "fieldname": "event_date_gregorian",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Event Date Gregorian"
+  },
+  {
+   "fieldname": "event_date_hijri",
+   "fieldtype": "Date",
+   "label": "Event Date Hijri",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_link",
+   "fieldtype": "Data",
+   "label": "Event Link"
+  },
+  {
+   "fieldname": "column_break_zzuf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_image",
+   "fieldtype": "Attach Image",
+   "label": "Event Image"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-23 10:36:47.623394",
+ "modified_by": "Administrator",
+ "module": "custom fsf",
+ "name": "Events",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

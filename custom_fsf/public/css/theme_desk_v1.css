@@ -1,0 +1,396 @@
+/* =========================================
+   1. FONTS & IMPORTS (MUST BE AT THE TOP)
+   ========================================= */
+   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+   :root {
+       /* Brand Colors */
+       --primary-100: #D8E5D9;
+       --primary-200: #BCCBB3;
+       --primary-300: #98B98C;
+       --primary-400: #619666;
+       --primary-500: #3A7C40;
+       --primary-600: #296E2F;
+       --primary-700: #195A1F;
+       --primary-800: #0E3E12;
+       --primary-900: #062609;
+   
+       /* Greys & Backgrounds */
+       --gray-100: #ffffff;
+       --gray-200: #EEF0EE;
+       --gray-300: #DEDEDD;
+       --gray-400: #C9CCC9;
+       --gray-500: #BBBBBB;
+       --gray-600: #969996;
+       --gray-700: #7D807D;
+       --gray-800: #646864;
+       --gray-900: #323332;
+       --gray-1000: #191A19;
+   
+       /* App Background - slightly off-white to make cards pop */
+       --app-bg: #f4f7f4; 
+   
+       /* Status Colors */
+       --error: #741111;
+       --info: #115E73;
+       --success: #327311;
+       --warning: #5D4821;
+   
+       /* Component Vars */
+       --scroll-bg: var(--gray-200);
+       --scroll-color: var(--gray-400);
+       --border-color: var(--gray-300);
+       --bg-color: var(--gray-100);
+       --text-color: var(--gray-1000);
+       --card-radius: 12px;
+
+       --font-stack: 'IBM Plex Sans Arabic', sans-serif !important;
+       --font-family-sans-serif: 'IBM Plex Sans Arabic', sans-serif !important;
+       --font-original: 'IBM Plex Sans Arabic', sans-serif !important;
+   }
+   
+   /* =========================================
+      2. GLOBAL TYPOGRAPHY & RESET
+      ========================================= */
+   
+   /* Force Inter Font everywhere */
+   body, 
+   h1, h2, h3, h4, h5, h6,
+   .form-control,
+   .btn,
+   input, textarea, select,
+   .navbar-brand,
+   .page-title,
+   div, span, p, a {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+   }
+   html[data-theme="light"] body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+}
+   /* Set the main background color */
+   body, .page-container, .page-content {
+       background-color: var(--app-bg) !important;
+   }
+   
+    /* Fix Layout Height & Remove Borders */
+    .layout-main-section {
+        min-height: 85vh; 
+        display: flex;
+        flex-direction: column;
+        /* The Fix: */
+        border: none !important;
+        box-shadow: none !important;
+        background-color: white !important;
+    }
+
+   @media (min-width: 768px) {
+       body.full-width .container {
+           width: 100%;
+           max-width: 100%;
+       }
+   }
+   
+   /* =========================================
+      3. SCROLLBARS
+      ========================================= */
+   *::-webkit-scrollbar {
+       width: 6px;
+   }
+   *::-webkit-scrollbar-track {
+       background: var(--scroll-bg);
+   }
+   *::-webkit-scrollbar-thumb {
+       background-color: var(--scroll-color);
+       border-radius: 20px;
+   }
+   * {
+       scrollbar-width: thin;
+       scrollbar-color: var(--scroll-color) var(--scroll-bg);
+   }
+   
+   /* =========================================
+      4. NAVBAR & TOP BAR
+      ========================================= */
+   .navbar,
+   .navbar-expand {
+       background-color: var(--primary-600) !important;
+       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+   }
+   
+   .navbar .navbar-nav a.nav-link,
+   #navbar-breadcrumbs a,
+   #navbar-breadcrumbs > li > a::before {
+       color: white !important;
+   }
+   
+   /* Search Bar Polish */
+   .navbar .search-bar {
+       background-color: rgba(255,255,255,0.15);
+       border: none;
+       color: white;
+       border-radius: 6px;
+   }
+   .navbar .search-bar::placeholder {
+       color: rgba(255,255,255,0.7);
+   }
+   
+   /* Hide Clutter (Help, Bug Report) */
+   .navbar .dropdown-help, 
+   .navbar .dropdown-navbar-user .dropdown-item:has(svg.icon-bug) {
+       display: none !important;
+   }
+   
+   /* =========================================
+      5. SIDEBAR (CLEAN & HACKED)
+      ========================================= */
+   .sidebar {
+       background-color: var(--gray-100);
+       border-right: 1px solid var(--border-color);
+   }
+   
+   /* Highlight active items */
+   .standard-sidebar-item a {
+       color: var(--gray-900) !important;
+       border-radius: 8px;
+       margin-left: .5rem;
+       padding: 0.6rem 1rem;
+       transition: all 0.2s ease;
+       font-weight: 500;
+       margin-left: .5rem;
+       margin-inline-start: .5rem;
+   }
+   
+   .standard-sidebar-item a:hover,
+   .standard-sidebar-item a:focus,
+   .standard-sidebar-item.selected a {
+       background-color: var(--primary-100) !important; /* Light Green background */
+       color: var(--primary-800) !important; /* Dark Green Text */
+   }  
+   
+   .standard-sidebar-item a:hover .sidebar-item-icon svg,
+   .standard-sidebar-item.selected a .sidebar-item-icon svg {
+       fill: var(--primary-600) !important;
+       stroke: var(--primary-600) !important;
+   }
+   
+   /* === THE HACK: Hide Sidebar Group Titles === */
+   /* This hides "Domains", "Administration" text but keeps spacing */
+   button.standard-sidebar-label .section-title {
+     font-size: 0 !important;
+     line-height: 0 !important;
+   }
+   button.standard-sidebar-label .section-title::after {
+     content: " "; /* Keeps layout safe */
+   }
+   
+   /* =========================================
+      6. LIST VIEWS (THE "CARD" LOOK)
+      ========================================= */
+   
+   /* Turn List Rows into Floating Cards */
+   .list-row, .list-row-container {
+       background-color: white;
+       margin-bottom: 8px;
+       border-radius: 8px;
+       border: 1px solid transparent;
+       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+       transition: all 0.2s ease;
+   }
+   
+   /* Hover Effect for Lists */
+   .list-row:hover, .list-row-container:hover {
+       transform: translateY(-1px);
+       box-shadow: 0 4px 12px rgba(58, 124, 64, 0.1);
+       border-color: var(--primary-300);
+       z-index: 1;
+   }
+   
+   /* Remove internal borders to make it look like one card */
+   .list-row-col {
+       border-bottom: none !important;
+   }
+   
+   /* Empty State (No Result) Styling */
+   .no-result {
+       background-color: white;
+       border-radius: 12px;
+       padding: 3rem;
+       border: 1px dashed var(--primary-300);
+       text-align: center;
+       color: var(--gray-600);
+       box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+   }
+   
+   /* =========================================
+      7. CARDS, WIDGETS & CONTAINERS
+      ========================================= */
+   .card, .widget {
+       padding: 1.25rem !important;
+       border: 1px solid var(--gray-200);
+       border-radius: var(--card-radius);
+       background: white;
+       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+   }
+   
+   .widget .section-body, .widget .form-section {
+       padding: 0.5rem 1rem;
+   }
+   
+   .widget .form-section .section-head,
+   .card .section-head {
+       font-size: 1rem;
+       font-weight: 600;
+       color: var(--primary-900);
+       margin-bottom: 0.75rem;
+   }
+   
+   /* Dashboard Sections */
+   .section-body {
+       border-radius: var(--card-radius);
+       background: #ffffff;
+       padding: 1.5rem;
+       margin-bottom: 1.5rem;
+   }
+   
+   /* =========================================
+      8. FORMS & INPUTS
+      ========================================= */
+   .form-control,
+   .awesomplete .input-with-feedback,
+   .comment-box .comment-input-container .ql-editor,
+   .duration-picker .duration-input {
+       border: 1px solid var(--border-color);
+       background-color: #ffffff;
+       border-radius: 6px;
+       padding: 8px 12px;
+       transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   }
+   
+   .form-control:focus {
+       border-color: var(--primary-500);
+       background-color: #ffffff;
+       box-shadow: 0 0 0 3px rgba(58, 124, 64, 0.15);
+   }
+   
+   input[type="checkbox"],
+   input[type="radio"] {
+       accent-color: var(--primary-500);
+   }
+   
+   /* =========================================
+      9. BUTTONS
+      ========================================= */
+   .btn {
+       border-radius: 6px;
+       font-weight: 500;
+       padding: 6px 16px;
+   }
+   
+   .btn-primary,
+   .btn-success {
+       background-color: var(--primary-500) !important;
+       border-color: var(--primary-500) !important;
+       color: white !important;
+       box-shadow: 0 2px 4px rgba(58, 124, 64, 0.2);
+   }
+   
+   .btn-primary:hover {
+       background-color: var(--primary-600) !important;
+       box-shadow: 0 4px 8px rgba(58, 124, 64, 0.3);
+   }
+   
+   .btn-secondary,
+   .btn-default {
+       background-color: white;
+       border: 1px solid var(--gray-300);
+       color: var(--gray-900);
+   }
+   
+   /* "New" Buttons (Plus Icon) */
+   button:has(svg.lucide-plus-icon) {
+       background-color: var(--primary-500) !important;
+       color: white !important;
+       border-radius: 8px !important;
+   }
+   
+   /* =========================================
+      10. LOGIN PAGE (MODERN)
+      ========================================= */
+   .web-page {
+       /* Gradient Background */
+       background-color: var(--primary-900);
+       background-image: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-900) 100%);
+   }
+   
+   .login-content {
+       background: transparent !important;
+       box-shadow: none !important;
+   }
+   
+   /* The Login Card */
+   .page-card {
+       border-radius: 16px !important;
+       box-shadow: 0 20px 50px rgba(0,0,0,0.3) !important;
+       border: 1px solid rgba(255,255,255,0.1);
+       padding: 3rem !important;
+       background-color: white !important;
+   }
+   
+   .btn-login {
+       background: var(--primary-500) !important;
+       height: 45px;
+       font-size: 16px;
+       letter-spacing: 0.5px;
+       text-transform: uppercase;
+       box-shadow: 0 4px 14px rgba(58, 124, 64, 0.4);
+       width: 100%;
+       margin-top: 1rem;
+   }
+   
+   /* Hide default login headings */
+   .login-content .page-card-head h4,
+   .page-card-head h4 {
+       display: none !important;
+   }
+   .toggle-password {
+       display: none !important;
+   }
+   
+   /* =========================================
+      11. MODALS & UTILITIES
+      ========================================= */
+   .modal-content {
+       border-radius: 16px !important;
+       border: none;
+       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+   }
+   
+   .modal-header {
+       border-bottom: 1px solid var(--gray-200);
+       padding: 1.5rem;
+   }
+   
+   .modal-footer {
+       background-color: var(--app-bg);
+       border-bottom-left-radius: 16px;
+       border-bottom-right-radius: 16px;
+   }
+   
+   /* Badges & Toasts */
+   .badge-success, .toast-success { background-color: #DEF1D4 !important; color: #327311; }
+   .badge-danger, .toast-danger { background-color: #F2D4D4 !important; color: #741111; }
+   .badge-info, .toast-info { background-color: #D4E7F1 !important; color: #11486D; }
+   .badge-warning, .toast-warning { background-color: #F4E7D1 !important; color: #5D4821; }
+   
+   .spinner-border {
+       border-top-color: var(--primary-500);
+   }
+
+   /* HD Ticket list: force RTL alignment on resolution time column */
+   [dir="rtl"] .list-row .list-row-col[data-field="resolution_time_minutes"] .static-area,
+   [dir="rtl"] .list-row .list-row-col[data-field="resolution_time_minutes"] .field-area {
+       text-align: right !important;
+   }
