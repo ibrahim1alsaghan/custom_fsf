@@ -21,3 +21,4 @@ custom_fsf.patches.set_session_timeout_arabic
 custom_fsf.patches.remove_hd_dashboard_shortcut
 custom_fsf.patches.setup_module_roles
 custom_fsf.patches.configure_secure_upload_policy
+custom_fsf.patches.setup_role_profiles

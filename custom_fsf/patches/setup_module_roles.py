@@ -8,10 +8,15 @@ every employee sees only the assets where they are custodian, plus their
 direct reports' assets (Employee.reports_to). The old "Asset User" role is
 disposed of by this patch.
 
+Because Custom DocPerm rows replace a doctype's standard permissions rather
+than adding to them, the patch also preserves/restores those standard rows and
+gives System Manager full rights across the app — see "Admin coverage" below.
+
 Idempotent: safe to re-run on every migrate.
 """
 
 import frappe
+from frappe.permissions import setup_custom_perms
 
 
 ASSET_ROLES = [
@@ -150,6 +155,117 @@ CHART_GRANTS = {
     "Failed Login Attempts": ["System Manager", "Audit Viewer"],
 }
 
+# ---------------------------------------------------------------------------
+# Admin coverage
+# ---------------------------------------------------------------------------
+# A Custom DocPerm row REPLACES a doctype's standard permissions wholesale:
+# frappe.permissions.get_valid_perms() reads DocPerm rows only for doctypes
+# that have no Custom DocPerm row at all. So the single `("User", READ)`
+# grant above deletes ERPNext's "System Manager can create/write User"
+# permission for everyone — Administrator included, because the desk builds
+# its can_create / can_write lists from roles
+# (frappe.utils.user.UserPermissions.build_perm_map), and that path has no
+# Administrator bypass. The symptom on a fresh install is an admin who can
+# open the User list but cannot add or edit a user.
+#
+# _ensure_custom_docperm() now snapshots the standard rows before adding the
+# first custom one, so new sites never lose them; _backfill_standard_perms()
+# below repairs sites migrated before that fix.
+#
+# ADMIN_GRANTS is the belt-and-braces half of the same problem: it gives
+# System Manager explicit full rights on every doctype this app owns or
+# touches. The app's own doctypes need it independently of the Custom
+# DocPerm issue — the HD DocType JSONs only list HD Manager / HD Agent /
+# Employee, and Audit Log only lists Audit Viewer, so System Manager has no
+# access to them at all as shipped.
+APP_DOCTYPES = [
+    # "custom fsf" module
+    "Announcement",
+    "Audit Log",
+    "Client Evaluation Form",
+    "Events",
+    "Lessons Learned",
+    "Library",
+    "News",
+    "Project Recommendation",
+    "Security Alerts",
+    # "HD" module
+    "HD Team",
+    "HD Team Member",
+    "HD Ticket",
+    "HD Ticket Category",
+    "HD Ticket Priority",
+    "HD Ticket Type",
+]
+
+
+def _touched_doctypes():
+    """Every doctype the grant tables above convert to Custom DocPerm, i.e.
+    every doctype whose standard permissions this app replaces."""
+    seen = []
+    for grants in (ASSET_GRANTS, HD_GRANTS, HR_GRANTS, PROJECTS_GRANTS, USER_PROFILE_GRANTS):
+        for pairs in grants.values():
+            for doctype, _perms in pairs:
+                if doctype not in seen:
+                    seen.append(doctype)
+    # custom_fsf.patches.set_audit_log_permissions adds a Custom DocPerm row
+    # for Audit Viewer, replacing Audit Log's standard System Manager perms.
+    if "Audit Log" not in seen:
+        seen.append("Audit Log")
+    return seen
+
+
+def _admin_grants():
+    doctypes = APP_DOCTYPES + [dt for dt in _touched_doctypes() if dt not in APP_DOCTYPES]
+    return {"System Manager": [(dt, FULL) for dt in doctypes]}
+
+
+BACKFILL_FLAG = "custom_fsf_standard_docperm_backfill"
+
+
+def _backfill_standard_perms():
+    """One-shot repair for sites that already ran the earlier version of this
+    patch and lost their standard permissions.
+
+    For each doctype this app converted to Custom DocPerm, copy back any
+    standard DocPerm row that has no Custom DocPerm counterpart. Runs once
+    and then records a flag, so a permission an admin deliberately removes
+    later in Role Permission Manager is not resurrected on the next migrate.
+    """
+    if frappe.db.get_default(BACKFILL_FLAG):
+        return
+
+    skip = {"name", "creation", "modified", "modified_by", "owner", "idx", "doctype"}
+
+    for doctype in _touched_doctypes():
+        if not frappe.db.exists("DocType", doctype):
+            continue
+        if not frappe.db.exists("Custom DocPerm", {"parent": doctype}):
+            continue  # still on standard perms — nothing was replaced
+
+        existing = {
+            (r.role, r.permlevel, r.if_owner)
+            for r in frappe.get_all(
+                "Custom DocPerm",
+                filters={"parent": doctype},
+                fields=["role", "permlevel", "if_owner"],
+            )
+        }
+        for row in frappe.get_all("DocPerm", filters={"parent": doctype}, fields="*"):
+            if (row.role, row.permlevel, row.if_owner) in existing:
+                continue
+            if not frappe.db.exists("Role", row.role):
+                continue
+            doc = frappe.new_doc("Custom DocPerm")
+            doc.update({k: v for k, v in row.items() if k not in skip})
+            doc.parenttype = "DocType"
+            doc.parentfield = "permissions"
+            doc.insert(ignore_permissions=True)
+            print(f"✅ Restored standard '{row.role}' perm on '{doctype}'")
+
+    frappe.db.set_default(BACKFILL_FLAG, "1")
+
+
 # Note: Number Cards have no `roles` table in this Frappe version, so the
 # asset dashboard cards (Total Assets, Asset Value, ...) can't be gated with
 # Has Role rows. They're gated in code instead — see
@@ -172,21 +288,58 @@ def _ensure_role(role_name, description):
     print(f"✅ Created role '{role_name}'")
 
 
-def _ensure_custom_docperm(parent, role, perms):
-    if frappe.db.exists(
-        "Custom DocPerm",
-        {"parent": parent, "role": role, "permlevel": 0},
-    ):
-        return
+def _applicable(parent, perms):
+    """Drop submit/cancel/amend for doctypes that aren't submittable, so a
+    FULL grant stays valid on plain doctypes (Item, User, Library, ...)."""
+    if not perms.get("submit"):
+        return perms
+    if frappe.db.get_value("DocType", parent, "is_submittable"):
+        return perms
+    return {k: v for k, v in perms.items() if k not in ("submit", "cancel", "amend")}
+
+
+def _ensure_custom_docperm(parent, role, perms, upgrade=False):
     if not frappe.db.exists("DocType", parent):
         # ERPNext / target app not installed on this site — skip silently.
         return
     if not frappe.db.exists("Role", role):
         return
+
+    perms = _applicable(parent, perms)
+
+    existing = frappe.db.get_value(
+        "Custom DocPerm",
+        {"parent": parent, "role": role, "permlevel": 0},
+    )
+    if existing:
+        if not upgrade:
+            return
+        # Widen the existing row rather than skipping it, so a role that was
+        # granted read-only earlier still ends up with the rights asked for
+        # here. Rights are only ever added, never taken away.
+        doc = frappe.get_doc("Custom DocPerm", existing)
+        added = [k for k, v in perms.items() if v and not doc.get(k)]
+        if not added:
+            return
+        for key in added:
+            doc.set(key, 1)
+        doc.save(ignore_permissions=True)
+        print(f"✅ Widened '{role}' perm on '{parent}' ({', '.join(added)})")
+        return
+
+    # A Custom DocPerm row REPLACES the doctype's standard permissions
+    # wholesale (frappe.permissions.get_valid_perms), so copy the standard
+    # rows across before adding the first custom one — exactly what
+    # frappe.permissions.add_permission does. Without this, adding a single
+    # read row for, say, Document Viewer on `User` silently deletes
+    # ERPNext's "System Manager can create/write User" permission.
+    setup_custom_perms(parent)
+
     doc = {
         "doctype": "Custom DocPerm",
         "parent": parent,
         "parenttype": "DocType",
+        "parentfield": "permissions",
         "role": role,
         "permlevel": 0,
     }
@@ -195,10 +348,10 @@ def _ensure_custom_docperm(parent, role, perms):
     print(f"✅ Granted '{role}' perm on '{parent}'")
 
 
-def _apply_grants(grants):
+def _apply_grants(grants, upgrade=False):
     for role, pairs in grants.items():
         for doctype, perms in pairs:
-            _ensure_custom_docperm(doctype, role, perms)
+            _ensure_custom_docperm(doctype, role, perms, upgrade=upgrade)
 
 
 def _ensure_has_role(parent, parenttype, role, parentfield="roles"):
@@ -266,6 +419,11 @@ def execute():
     _apply_grants(PROJECTS_GRANTS)
     _apply_grants(USER_PROFILE_GRANTS)
 
+    # Put back whatever the grants above displaced (one-shot), then make sure
+    # System Manager holds full rights everywhere this app reaches.
+    _backfill_standard_perms()
+    _apply_grants(_admin_grants(), upgrade=True)
+
     _apply_workspace_grants(WORKSPACE_GRANTS)
     _apply_report_grants(REPORT_GRANTS)
     _apply_chart_grants(CHART_GRANTS)
@@ -289,6 +447,9 @@ def execute():
     _remove_employee_self_restrictions()
     _set_assets_as_home_for_asset_users()
 
+    # Permission rows are read through a cache keyed by doctype+user; without
+    # this the desk keeps serving the pre-patch perms until the next restart.
+    frappe.clear_cache()
     frappe.db.commit()
 
 
