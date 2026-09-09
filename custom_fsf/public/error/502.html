@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex, nofollow" />
+	<title>عذراً، حدث خطأ | Something Went Wrong</title>
+	<link rel="icon" type="image/png" href="/assets/custom_fsf/images/Fsf-xs-logo.png" />
+	<style>
+		:root {
+			--fsf-dark: #1a3c34;
+			--fsf-green-dark: #146c43;
+			--fsf-gold: #c5a470;
+			--fsf-bg: #f8f9fa;
+			--fsf-muted: #5f6f6a;
+			--fsf-border: #d1dcd8;
+		}
+
+		* { box-sizing: border-box; }
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-color: var(--fsf-bg);
+			font-family: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
+				"Segoe UI", "Noto Sans Arabic", Roboto, "Helvetica Neue", Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.wrap {
+			min-height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 40px 20px 64px;
+		}
+
+		.logo {
+			height: 84px;
+			width: auto;
+			margin-bottom: 26px;
+		}
+
+		.icon {
+			color: var(--fsf-dark);
+			opacity: 0.9;
+			margin-bottom: 22px;
+		}
+
+		/* Slow pulse to signal "working on it" rather than "dead" */
+		.icon svg { animation: pulse 2.4s ease-in-out infinite; }
+
+		@keyframes pulse {
+			0%, 100% { opacity: 0.55; transform: scale(1); }
+			50%      { opacity: 1;    transform: scale(1.04); }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.icon svg { animation: none; opacity: 0.9; }
+		}
+
+		h1 {
+			font-size: 27px;
+			font-weight: 600;
+			color: var(--fsf-dark);
+			margin: 0 0 12px;
+		}
+
+		.sub {
+			font-size: 15px;
+			color: var(--fsf-muted);
+			margin: 0 0 6px;
+			max-width: 480px;
+			line-height: 1.7;
+		}
+
+		.sub-en {
+			font-size: 13px;
+			opacity: 0.75;
+			direction: ltr;
+		}
+
+		.rule {
+			width: 56px;
+			height: 3px;
+			border-radius: 2px;
+			background-color: var(--fsf-gold);
+			margin: 24px auto;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 28px;
+			border-radius: 6px;
+			font-size: 14px;
+			font-weight: 500;
+			font-family: inherit;
+			text-decoration: none;
+			cursor: pointer;
+			border: 1px solid transparent;
+			background-color: var(--fsf-dark);
+			color: #fff;
+			transition: background-color 0.15s ease;
+		}
+
+		.btn:hover, .btn:focus { background-color: var(--fsf-green-dark); }
+
+		.meta {
+			margin-top: 30px;
+			font-size: 12px;
+			color: var(--fsf-muted);
+			opacity: 0.85;
+			min-height: 1.2em;
+		}
+
+		@media (max-width: 480px) {
+			.logo { height: 64px; margin-bottom: 18px; }
+			h1 { font-size: 22px; }
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img
+			class="logo"
+			src="/assets/custom_fsf/images/fsf.png"
+			alt="قوات أمن المنشآت"
+			onerror="this.style.display='none'"
+		/>
+
+		<div class="icon">
+			<svg width="56" height="56" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="1.5"
+				stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<circle cx="12" cy="12" r="9.25" />
+				<line x1="12" y1="7.5" x2="12" y2="13" />
+				<line x1="12" y1="16.5" x2="12.01" y2="16.5" />
+			</svg>
+		</div>
+
+		<h1>عذراً، حدث خطأ</h1>
+
+		<p class="sub">
+			تعذّر إتمام طلبك في الوقت الحالي. يرجى المحاولة مرة أخرى بعد قليل.
+		</p>
+
+		<p class="sub sub-en">
+			We could not complete your request right now. Please try again shortly.
+		</p>
+
+		<div class="rule"></div>
+
+		<button class="btn" id="retry" type="button">إعادة المحاولة الآن &nbsp;·&nbsp; Retry</button>
+
+		<div class="meta" id="countdown"></div>
+	</div>
+
+	<script>
+		(function () {
+			var RETRY_SECONDS = 15;
+			var left = RETRY_SECONDS;
+
+			var countdown = document.getElementById("countdown");
+			var retry = document.getElementById("retry");
+
+			retry.addEventListener("click", function () {
+				location.reload();
+			});
+
+			function tick() {
+				countdown.textContent =
+					"إعادة المحاولة تلقائياً خلال " + left + " ثانية · Retrying in " + left + "s";
+
+				if (left <= 0) {
+					location.reload();
+					return;
+				}
+
+				left -= 1;
+				setTimeout(tick, 1000);
+			}
+
+			tick();
+		})();
+	</script>
+</body>
+</html>

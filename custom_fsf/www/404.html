@@ -1,0 +1,48 @@
+{% extends "templates/web.html" %}
+
+{%- block title -%}{{ _("Page Not Found") }}{%- endblock -%}
+
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{%- block style %}
+{{ super() }}
+<style>
+	{% include "custom_fsf/templates/styles/fsf_error.css" %}
+</style>
+{% endblock -%}
+
+{% block page_content %}
+
+<script>
+	// Frappe's website layer checks this flag to cache/serve 404s correctly.
+	window.is_404 = true;
+</script>
+
+<div class="fsf-error">
+	<img
+		class="fsf-error__logo"
+		src="/assets/custom_fsf/images/fsf.png"
+		alt="{{ _("Facilities Security Forces") }}"
+		onerror="this.style.display='none'"
+	/>
+
+	<div class="fsf-error__code">404</div>
+
+	<h1 class="fsf-error__title" dir="auto">{{ _("Page Not Found") }}</h1>
+
+	<p class="fsf-error__subtitle" dir="auto">
+		{{ _("The page you are looking for does not exist or has been moved.") }}
+	</p>
+
+	<div class="fsf-error__rule"></div>
+
+	<div class="fsf-error__actions">
+		<a href="/" class="fsf-error__btn fsf-error__btn--primary">{{ _("Back to Home") }}</a>
+		<a href="javascript:history.back()" class="fsf-error__btn fsf-error__btn--ghost">{{ _("Go Back") }}</a>
+	</div>
+
+	<div class="fsf-error__meta">{{ _("Error Code: {0}").format(404) }}</div>
+</div>
+
+{% endblock %}

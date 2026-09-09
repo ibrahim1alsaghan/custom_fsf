@@ -1,0 +1,69 @@
+{% extends "templates/web.html" %}
+
+{%- block title -%}{{ error_title or _("Something Went Wrong") }}{%- endblock -%}
+
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{%- block style %}
+{{ super() }}
+<style>
+	{% include "custom_fsf/templates/styles/fsf_error.css" %}
+</style>
+{% endblock -%}
+
+{% block page_content %}
+
+<div class="fsf-error">
+	<img
+		class="fsf-error__logo"
+		src="/assets/custom_fsf/images/fsf.png"
+		alt="{{ _("Facilities Security Forces") }}"
+		onerror="this.style.display='none'"
+	/>
+
+	<div class="fsf-error__code">{{ http_status_code or 500 }}</div>
+
+	<h1 class="fsf-error__title" dir="auto">{{ error_title }}</h1>
+
+	<p class="fsf-error__subtitle" dir="auto">{{ error_message }}</p>
+
+	<div class="fsf-error__rule"></div>
+
+	<div class="fsf-error__actions">
+		<a href="/" class="fsf-error__btn fsf-error__btn--primary">{{ _("Back to Home") }}</a>
+		<a href="javascript:location.reload()" class="fsf-error__btn fsf-error__btn--ghost">{{ _("Try Again") }}</a>
+	</div>
+
+	{% if error %}
+	<div class="fsf-error__details">
+		<div style="text-align: center">
+			<button class="fsf-error__toggle" id="fsf-toggle-trace">
+				{{ _("Hide Error") if dev_server else _("Show Error") }}
+			</button>
+		</div>
+		<div class="fsf-error__trace {{ '' if dev_server else 'fsf-error__hidden' }}" id="fsf-trace">
+			<pre><code>{{ error }}</code></pre>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="fsf-error__meta">{{ _("Error Code: {0}").format(http_status_code or 500) }}</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	(function () {
+		var toggle = document.getElementById("fsf-toggle-trace");
+		var trace = document.getElementById("fsf-trace");
+		if (!toggle || !trace) return;
+
+		toggle.addEventListener("click", function () {
+			var hidden = trace.classList.toggle("fsf-error__hidden");
+			toggle.textContent = hidden ? "{{ _("Show Error") }}" : "{{ _("Hide Error") }}";
+		});
+	})();
+</script>
+{% endblock %}

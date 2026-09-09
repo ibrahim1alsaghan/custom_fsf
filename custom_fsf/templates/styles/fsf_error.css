@@ -1,0 +1,195 @@
+/* Shared styling for all FSF error pages (404 / 403 / 500).
+   Kept direction-agnostic (centred layout, logical properties) so it renders
+   correctly for both the Arabic RTL and English LTR site languages. */
+
+:root {
+	--fsf-dark: #1a3c34;
+	--fsf-green: #198754;
+	--fsf-green-dark: #146c43;
+	--fsf-gold: #c5a470;
+	--fsf-bg: #f8f9fa;
+	--fsf-muted: #5f6f6a;
+	--fsf-border: #d1dcd8;
+}
+
+header.navbar,
+footer.web-footer,
+.website-footer {
+	display: none !important;
+}
+
+body {
+	background-color: var(--fsf-bg);
+}
+
+.fsf-error {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 40px 20px 64px;
+	font-family: "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.fsf-error__logo {
+	height: 84px;
+	width: auto;
+	margin-bottom: 28px;
+}
+
+/* Large watermark status code sitting behind the heading */
+.fsf-error__code {
+	font-size: clamp(84px, 18vw, 148px);
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	color: var(--fsf-dark);
+	opacity: 0.08;
+	margin-bottom: -0.42em;
+	user-select: none;
+}
+
+.fsf-error__title {
+	font-size: clamp(22px, 4vw, 30px);
+	font-weight: 600;
+	color: var(--fsf-dark);
+	margin: 0 0 10px;
+}
+
+.fsf-error__subtitle {
+	font-size: 15px;
+	font-weight: 400;
+	color: var(--fsf-muted);
+	margin: 0 0 6px;
+	max-width: 460px;
+}
+
+/* Secondary (English) line under the Arabic copy */
+.fsf-error__subtitle--alt {
+	font-size: 13px;
+	opacity: 0.75;
+	direction: ltr;
+}
+
+/* Gold rule echoing the FSF brand accent */
+.fsf-error__rule {
+	width: 56px;
+	height: 3px;
+	border-radius: 2px;
+	background-color: var(--fsf-gold);
+	margin: 22px auto;
+}
+
+.fsf-error__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+	margin-top: 8px;
+}
+
+.fsf-error__btn {
+	display: inline-block;
+	padding: 10px 26px;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	border: 1px solid transparent;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.fsf-error__btn--primary {
+	background-color: var(--fsf-dark);
+	color: #fff;
+}
+
+.fsf-error__btn--primary:hover,
+.fsf-error__btn--primary:focus {
+	background-color: var(--fsf-green-dark);
+	color: #fff;
+	text-decoration: none;
+}
+
+.fsf-error__btn--ghost {
+	background-color: transparent;
+	color: var(--fsf-dark);
+	border-color: var(--fsf-border);
+}
+
+.fsf-error__btn--ghost:hover,
+.fsf-error__btn--ghost:focus {
+	background-color: #fff;
+	color: var(--fsf-dark);
+	text-decoration: none;
+}
+
+/* Reference / status line at the very bottom */
+.fsf-error__meta {
+	margin-top: 34px;
+	font-size: 12px;
+	color: var(--fsf-muted);
+	opacity: 0.85;
+}
+
+/* Collapsible traceback, only ever populated on the 500 page */
+.fsf-error__details {
+	width: 100%;
+	max-width: 760px;
+	margin-top: 22px;
+	text-align: start;
+}
+
+.fsf-error__toggle {
+	background: none;
+	border: 1px solid var(--fsf-border);
+	border-radius: 6px;
+	padding: 6px 16px;
+	font-size: 12px;
+	color: var(--fsf-muted);
+	cursor: pointer;
+}
+
+.fsf-error__toggle:hover {
+	background-color: #fff;
+}
+
+.fsf-error__trace {
+	margin-top: 14px;
+	background-color: #12211d;
+	border-radius: 8px;
+	padding: 16px;
+	overflow-x: auto;
+	direction: ltr;
+	text-align: start;
+}
+
+.fsf-error__trace pre {
+	margin: 0;
+	background: none;
+	border: none;
+	padding: 0;
+}
+
+.fsf-error__trace code {
+	color: #d6e2de;
+	font-size: 12px;
+	line-height: 1.55;
+	white-space: pre;
+	background: none;
+	padding: 0;
+}
+
+.fsf-error__hidden {
+	display: none;
+}
+
+@media (max-width: 480px) {
+	.fsf-error__logo {
+		height: 64px;
+		margin-bottom: 20px;
+	}
+}

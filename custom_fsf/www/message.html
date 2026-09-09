@@ -1,0 +1,84 @@
+{#
+	FSF-branded replacement for frappe/www/message.html.
+
+	Resolved ahead of Frappe's copy by the Jinja loader (apps are loaded before
+	`frappe`), which is what lets it take over the 403 "Not Permitted" page --
+	NotPermittedPage hardcodes the *app path* to frappe, but the template itself
+	is looked up through the loader.
+
+	This page is NOT 403-only: `frappe.respond_as_web_page()` renders through it
+	for verification/unsubscribe/workflow-action flows too, so the whole context
+	contract is preserved -- title, header, message, success, indicator_color,
+	primary_action, primary_label, fullpage, card_width, error_code -- along with
+	the `message_body` block.
+#}
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title or _("Message") }}{% endblock %}
+
+{%- block navbar -%}{%- endblock -%}
+{%- block footer -%}{%- endblock -%}
+
+{%- block style %}
+{{ super() }}
+<style>
+	{% include "custom_fsf/templates/styles/fsf_error.css" %}
+
+	{% if card_width %}
+	.fsf-error__subtitle {
+		max-width: {{ card_width }}px;
+	}
+	{% endif %}
+</style>
+{% endblock -%}
+
+{% block page_content %}
+
+<div class="fsf-error">
+	<img
+		class="fsf-error__logo"
+		src="/assets/custom_fsf/images/fsf.png"
+		alt="{{ _("Facilities Security Forces") }}"
+		onerror="this.style.display='none'"
+	/>
+
+	<h1 class="fsf-error__title" dir="auto">{{ title or _("Message") }}</h1>
+
+	<div class="fsf-error__body">
+	{% block message_body %}
+		{% if message %}
+		<p class="fsf-error__subtitle" dir="auto">{{ message }}</p>
+		{% endif %}
+
+		<div class="fsf-error__rule"></div>
+
+		<div class="fsf-error__actions">
+			{% if primary_action %}
+			<a href="{{ primary_action }}" class="fsf-error__btn fsf-error__btn--primary">
+				{{ primary_label or _("Home") }}
+			</a>
+			{% endif %}
+			<a href="/" class="fsf-error__btn fsf-error__btn--ghost">{{ _("Back to Home") }}</a>
+		</div>
+	{% endblock %}
+	</div>
+
+	{% if error_code %}
+	<div class="fsf-error__meta">{{ _("Error Code: {0}").format(error_code) }}</div>
+	{% endif %}
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	frappe.ready(function () {
+		// Preserved from the stock template: lets the desk redirect back after login.
+		if (window.location.hash || window.location.href.includes("/app")) {
+			localStorage.setItem("session_last_route", window.location.pathname);
+		}
+
+		$(".fsf-error__btn--primary").focus();
+	});
+</script>
+{% endblock %}
